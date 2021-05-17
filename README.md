@@ -1,2 +1,2 @@
-# snake
+# Snake
 The classic game, Snake!
