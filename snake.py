@@ -58,3 +58,22 @@ class Target(Turtle):
 		x = randint(-350, 350)
 		y = randint(-350, 300)
 		return (x, y)
+
+class ScoreBoard(Turtle):
+	def __init__(self):
+		super().__init__()
+		self.score = 0
+		self.penup()
+		self.hideturtle()
+		self.goto(0,350)
+		self.write("Score = " + str(self.score), True, align="center", font=("Arial", 30, "normal"))
+
+	def add_score(self):
+		self.score += 1
+		self.goto(0,350)
+		self.write("Score = " + str(self.score), True, align="center", font=("Arial", 30, "normal"))
+
+
+
+
+
