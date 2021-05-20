@@ -2,12 +2,13 @@ import turtle
 from turtle import Turtle, Screen
 import time
 from random import randint
-from snake import Snake
+from snake import Snake, Target
 screen = Screen()
 screen.tracer(0)
 screen.setup(800, 800)
 
 snake = Snake()
+food = Target()
 
 screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
@@ -19,17 +20,9 @@ for i in range(3):
 #
 
 #Generate food
-def random_coord():
-	x = randint(-350, 350)
-	y = randint(-350, 300)
-	return (x,y)
-food = Turtle()
-food.shape("circle")
-food.fillcolor("blue")
-food.penup()
+food.goto(food.random_cord())
 
 
-food.goto(random_coord())
 game_on = True
 
 while game_on:
@@ -39,8 +32,10 @@ while game_on:
 	snake.move_snake()
 	# Detetct when snake eats food
 	if snake.snake_body[0].distance(food) < 15:
+		snake.score += 1
+		print(snake.score)
 		snake.create_snake()
-		food.goto(random_coord())
+		food.goto(food.random_cord())
 
 #Detect collision with body
 	for body in snake.snake_body:

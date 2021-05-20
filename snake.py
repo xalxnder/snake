@@ -1,9 +1,9 @@
-import turtle
 from turtle import Turtle, Screen
-import time
 from random import randint
+import time
 screen = Screen()
 screen.tracer(0)
+
 screen.setup(800, 800)
 
 
@@ -11,6 +11,7 @@ class Snake:
 	def __init__(self,):
 		self.snake_body = []
 		self.count = 0
+		self.score = 0
 
 	#Add snake body
 	def create_snake(self):
@@ -44,3 +45,16 @@ class Snake:
 	def right(self):
 		if self.snake_body[0].heading() != 180:
 			self.snake_body[0].setheading(0)
+
+
+class Target(Turtle):
+	def __init__(self):
+		super().__init__()
+		self.shape("circle")
+		self.penup()
+		self.color("blue")
+
+	def random_cord(self):
+		x = randint(-350, 350)
+		y = randint(-350, 300)
+		return (x, y)
