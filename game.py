@@ -2,7 +2,7 @@ import turtle
 from turtle import Turtle, Screen
 import time
 from random import randint
-from snake import Snake, Target, ScoreBoard
+from snake import Snake, Target, ScoreBoard, GameOver
 screen = Screen()
 screen.tracer(0)
 screen.setup(800, 800)
@@ -50,7 +50,10 @@ while game_on:
 	#Detect collision with walls
 	for body in snake.snake_body:
 		if body.xcor() > 390 or body.ycor() > 390:
+			body.clear()
+			game_over = GameOver()
 			game_on = False
+
 
 #
 screen.exitonclick()
