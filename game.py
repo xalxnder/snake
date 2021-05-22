@@ -10,6 +10,7 @@ screen.setup(800, 800)
 snake = Snake()
 food = Target()
 score = ScoreBoard()
+game_over = GameOver()
 
 screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
@@ -31,7 +32,7 @@ while game_on:
 	time.sleep(0.1)
 	screen.update()
 	snake.move_snake()
-	# Detetct when snake eats food
+	# Detect when snake eats food
 	if snake.snake_body[0].distance(food) < 15:
 		score.score += 1
 		score.clear()
@@ -51,7 +52,7 @@ while game_on:
 	for body in snake.snake_body:
 		if body.xcor() > 390 or body.ycor() > 390:
 			body.clear()
-			game_over = GameOver()
+			game_over.message()
 			game_on = False
 
 
