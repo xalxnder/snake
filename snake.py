@@ -73,15 +73,13 @@ class ScoreBoard(Turtle):
 		self.goto(0,350)
 		self.write("Score = " + str(self.score), True, align="center", font=("Arial", 30, "normal"))
 
-
 class GameOver(Turtle):
 	def __init__(self):
 		super().__init__()
-
+		self.hideturtle()
 
 	def message(self):
 		self.penup()
-		self.hideturtle()
 		self.write("Game Over", True, align="center", font=("Arial", 30, "normal"))
 
 
