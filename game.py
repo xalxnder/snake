@@ -39,13 +39,18 @@ while game_on:
 		snake.create_snake()
 		food.goto(food.random_cord())
 
-#Detect collision with body
+	#Detect collision with body
 	for body in snake.snake_body:
 		if body == snake.snake_body[0]:
 			pass
 		elif snake.snake_body[0].distance(body) < 10:
 			game_on = False
 			print("Ahh")
+
+	#Detect collision with walls
+	for body in snake.snake_body:
+		if body.xcor() > 390 or body.ycor() > 390:
+			game_on = False
 
 #
 screen.exitonclick()
